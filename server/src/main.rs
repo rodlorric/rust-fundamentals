@@ -1,3 +1,9 @@
+use http::Method;
+use http::Request;
+use server::Server;
+
+mod http;
+mod server;
 fn main() {
 
     //let string = String::from("127.0.0.0:8080");
@@ -10,22 +16,16 @@ fn main() {
     //dbg!(string_borrow);
     //dbg!(string_literal);
 
+    //let get = Method::GET;
+    //let delete = Method::DELETE;
+    //let post = Method::POST;
+    //let put = Method::PUT;
+
     let server = Server::new("127.0.0.0:8080".to_string());
     server.run();
 }
 
-struct Server {
-    addr: String,
-}
-
-impl Server {
-    fn new(addr: String) -> Self { // Self is an alias of the name of the Struct, so it could alse be "fn new(addr: String) -> Self" instead.
-        Self { // Same as above, you could use "Server {"" instead
-            addr // It could be "addr: addr" too.
-        }
-    }
-
-    fn run(self) {
-        println!("Listening on {}", self.addr);
-    }
-}
+/* GET /user?id=10 HTTP/1.1\r\n
+HEADERS \r\n
+BODY
+*/
