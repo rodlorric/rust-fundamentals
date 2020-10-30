@@ -7,7 +7,7 @@ pub struct Server {
     addr: String,
 }
 
-impl Server {    
+impl Server {
     pub fn new(addr: String) -> Self { // Self is an alias of the name of the Struct, so it could alse be "fn new(addr: String) -> Self" instead.
         Self { // Same as above, you could use "Server {"" instead
             addr // It could be "addr: addr" too.
@@ -26,7 +26,6 @@ impl Server {
                     match stream.read(&mut buffer) {
                         Ok(_) => {
                             println!("Received a request: {}, from: {}", String::from_utf8_lossy(&buffer), &addr.to_string());
-
                             match Request::try_from(&buffer[..]) {
                                 Ok(request) => {},
                                 Err(e) => println!("Failed to parse a request: {}", e),
